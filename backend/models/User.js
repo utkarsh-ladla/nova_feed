@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
             require: [true, "Password is required"],
             minlength: 6
         },
-        bookmark: [
+        bookmarks: [
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Story"

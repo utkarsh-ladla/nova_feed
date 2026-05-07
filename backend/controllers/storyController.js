@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 
 const Story = require("../models/Story");
+const User = require("../models/User");
 
 const getStories = asyncHandler(async (req, res) => {
     const stories = await Story.find().sort({
@@ -29,4 +30,57 @@ const getSingleStory = asyncHandler(async (req, res) => {
     })
 })
 
-module.exports = { getStories, getSingleStory };
+const toggleBookmark = asyncHandler(async (req, res) => {
+    const storyId = req.params.id;
+
+    const user = await User.findById(req.user._id);
+
+    const story = await Story.findById(storyId);
+
+    if (!story) {
+        res.status(404);
+
+        throw new Error("Story not found");
+    }
+
+    const alreadyAdded = user.bookmarks.includes(storyId);
+
+    if (alreadyAdded) {
+
+        user.bookmarks = user.bookmarks.filter(
+            (id) => id.toString() !== storyId
+        );
+
+        await user.save();
+
+        return res.json({
+            success: true,
+            message: "Bookmark removed successfully",
+            bookmarks: user.bookmarks,
+        });
+    }
+
+    user.bookmarks.push(storyId);
+
+    await user.save();
+
+    return res.json({
+        success: true,
+        message: "Bookmark added successfully",
+        bookmarks: user.bookmarks,
+    });
+});
+
+const getBookmarks = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id).populate(
+        "bookmarks"
+    );
+
+    res.json({
+        success: true,
+        message: "Bookmarks fetched successfully",
+        bookmarks: user.bookmarks,
+    })
+})
+
+module.exports = { getStories, getSingleStory, toggleBookmark, getBookmarks };

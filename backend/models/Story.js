@@ -16,9 +16,8 @@ const storySchema = new mongoose.Schema({
     },
     author: {
         type: String,
-        required: true
     },
-    postAt: {
+    postedAt: {
         type: String,
         default: "Unknown"
     },

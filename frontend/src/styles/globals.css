@@ -1,0 +1,80 @@
+@layer base {
+  :root {
+    /* Brand & Primary Colors */
+    --primary: 221.2 83.2% 53.3%;
+    /* #2563EB */
+    --primary-foreground: 210 40% 98%;
+
+    /* Background & Surface Colors */
+    --background: 222 55% 9%;
+    /* #0b1326 */
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 13%;
+    /* #131b2e */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 55% 9%;
+    --popover-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20.2% 65.1%;
+    /* #94a3b8 */
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 32.6% 17.5%;
+    /* #1e293b */
+    --input: 217 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Spacing & Radii */
+    --radius: 0.5rem;
+    /* ROUND_EIGHT (8px) */
+
+    /* Typography Scales */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight text-foreground;
+  }
+}
+
+/* Custom Utility Classes for Nova Feed */
+@layer components {
+  .glass-nav {
+    @apply bg-background/70 backdrop-blur-md border-b border-border sticky top-0 z-50;
+  }
+
+  .story-card {
+    @apply bg-card border border-border rounded-lg p-4 transition-all hover:border-primary/50 hover:shadow-lg;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium transition-transform active:scale-95 hover:bg-primary/90;
+  }
+
+  .input-field {
+    @apply bg-card border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all;
+  }
+}

@@ -2,7 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const connectDB = require('./config/db')
 const morgan = require('morgan')
-
+const storyRoutes = require('./routes/storyRoutes')
+const scrapeRoutes = require('./routes/scrapeRoutes')
 const authRoutes = require('./routes/authRoutes');
 
 const {
@@ -20,6 +21,8 @@ app.get("/", (req, res) => {
 
 })
 app.use('/api/auth', authRoutes);
+app.use("/api/stories", storyRoutes);
+app.use("/api/scrape", scrapeRoutes);
 app.use(notFound);
 app.use(errorHandler);
 

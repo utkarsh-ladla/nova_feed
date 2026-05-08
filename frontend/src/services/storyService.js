@@ -1,7 +1,7 @@
 import API from "../api/axios";
 
-export const getStories = async (page = 1) => {
-    const response = await API.get(`/stories?page=${page}&limit=10`);
+export const getStories = async (page = 1, sort = "top") => {
+    const response = await API.get(`/stories?page=${page}&limit=10&sort=${sort}`);
     return response.data;
 };
 

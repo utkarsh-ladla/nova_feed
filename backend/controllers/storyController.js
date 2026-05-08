@@ -11,12 +11,12 @@ const getStories = asyncHandler(async (req, res) => {
 
     const skip = (page - 1) * limit;
 
+    const sort = req.query.sort === "newest" ? { createdAt: -1 } : { points: -1 };
+
     const totalStories = await Story.countDocuments();
 
     const stories = await Story.find()
-        .sort({
-            points: -1,
-        })
+        .sort(sort)
         .skip(skip)
         .limit(limit);
 

@@ -13,9 +13,9 @@ const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", getStories);
 
-router.get("/:id", getSingleStory);
-
 router.get("/bookmarks", protect, getBookmarks);
+
+router.get("/:id", getSingleStory);
 
 router.post("/:id/bookmark", protect, toggleBookmark);
 

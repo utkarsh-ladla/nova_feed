@@ -6,6 +6,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
+import Newest from './pages/Newest'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Bookmarks from './pages/Bookmarks'
@@ -16,6 +17,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+
+      <Route path="/newest" element={<Newest />} />
 
       <Route path="/login" element={<Login />} />
 

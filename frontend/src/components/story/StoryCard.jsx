@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { FiBookmark } from "react-icons/fi";
 import { FaBookmark } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthContext";
@@ -10,9 +10,13 @@ function StoryCard({ story }) {
     const navigate = useNavigate();
     
     // Check if bookmarked initially
-    const isInitiallyBookmarked = user?.bookmarks?.includes(story._id);
-    const [isBookmarked, setIsBookmarked] = useState(isInitiallyBookmarked);
+    const [isBookmarked, setIsBookmarked] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    // Sync bookmark state with user context
+    useEffect(() => {
+        setIsBookmarked(user?.bookmarks?.includes(story._id) || false);
+    }, [user, story._id]);
 
     const handleBookmark = async () => {
         if (!user) {

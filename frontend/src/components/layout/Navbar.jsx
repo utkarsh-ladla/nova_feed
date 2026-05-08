@@ -10,8 +10,8 @@ const Navbar = () => {
     const isAuthPage = pathname === "/login" || pathname === "/register";
 
     return (
-        <header className="border-b border-slate-800 bg-[#020817] sticky top-0 z-50">
-            <div className="flex items-center justify-between py-4 max-w-7xl mx-auto">
+        <header className="border-b border-slate-800 bg-[#020817] sticky top-0 z-50 px-6">
+            <div className="flex items-center justify-between py-4 w-full">
                 <Link to="/" className="text-2xl font-black text-blue-500 tracking-tight">
                     NOVA<span className="text-white">FEED</span>
                 </Link>

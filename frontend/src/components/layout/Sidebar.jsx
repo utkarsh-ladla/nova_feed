@@ -11,7 +11,7 @@ function Sidebar() {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <aside className="hidden md:block w-[250px] min-h-screen border-r border-slate-800 p-6">
+        <aside className="hidden md:block w-[250px] h-full border-r border-slate-800 p-6 overflow-y-auto">
             <div className="space-y-4">
                 <Link
                     to="/"

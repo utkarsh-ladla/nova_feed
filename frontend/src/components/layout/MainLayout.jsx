@@ -4,15 +4,15 @@ import Sidebar from "./Sidebar";
 function MainLayout({ children }) {
 
     return (
-        <div className="min-h-screen bg-[#020817] text-white">
+        <div className="h-screen flex flex-col bg-[#020817] text-white overflow-hidden">
 
             <Navbar />
 
-            <div className="flex">
+            <div className="flex flex-1 overflow-hidden">
 
                 <Sidebar />
 
-                <main className="flex-1 p-6">
+                <main className="flex-1 p-6 overflow-y-auto custom-scrollbar">
 
                     {children}
 

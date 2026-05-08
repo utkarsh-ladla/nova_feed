@@ -18,15 +18,6 @@ const Navbar = () => {
 
                 {!isAuthPage && (
                     <div className="flex items-center gap-6">
-                        <div className="hidden md:flex items-center gap-3 bg-slate-900/50 border border-slate-800 px-4 py-2 rounded-xl w-[300px] focus-within:border-blue-500 transition-all">
-                            <FiSearch className="text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Search stories..."
-                                className="bg-transparent outline-none text-sm w-full text-white placeholder:text-gray-500"
-                            />
-                        </div>
-
                         <div className="flex items-center gap-4">
                             {user ? (
                                 <div className="flex items-center gap-4">
